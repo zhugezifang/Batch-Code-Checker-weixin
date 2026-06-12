@@ -1,7 +1,6 @@
 <view class="page index-page" bindtap="closeBrandList">
   <view class="notice-bar">
-    <text class="notice-icon">!</text>
-    <text class="notice-text">注意5和S的区别</text>
+    <text class="notice-text">官网:https://batchcodechecker.org/zh</text>
   </view>
 
   <view class="query-area">
@@ -48,16 +47,10 @@
     </view>
 
     <view class="helper-row">
-      <text class="helper primary-helper">批号说明</text>
+      <text class="helper primary-helper" bindtap="openBatchCodeGuide">批号说明</text>
     </view>
 
     <button class="query-button" bindtap="handleQuery">立即查询</button>
-
-    <view class="record-title">
-      <text class="record-line">------</text>
-      <text class="record-text">查询记录</text>
-      <text class="record-line">------</text>
-    </view>
   </view>
 
   <view wx:if="{{result}}" class="result-panel {{result.status === 'pass' ? 'is-pass' : 'is-fail'}}">
@@ -66,9 +59,7 @@
         <text>{{result.status === 'pass' ? '✓' : '!'}}</text>
       </view>
       <view class="result-main">
-        <text class="result-kicker">查询结果</text>
         <text class="result-title">{{result.title}}</text>
-        <text class="result-code-pill">{{result.batchCode}}</text>
       </view>
       <text class="result-status">{{result.status === 'pass' ? '可用' : '异常'}}</text>
     </view>
@@ -88,6 +79,10 @@
     </view>
 
     <view class="result-info">
+      <view class="result-row">
+        <text class="result-label">批次号</text>
+        <text class="result-value">{{result.batchCode}}</text>
+      </view>
       <view class="result-row">
         <text class="result-label">品牌</text>
         <text class="result-value">{{result.brand}}</text>

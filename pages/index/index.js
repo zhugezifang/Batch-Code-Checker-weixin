@@ -1,5 +1,6 @@
 const brandOptions = require('../../utils/brands')
 const visibleBrandLimit = 20
+const batchCodeGuideUrl = 'https://batchcodechecker.org/zh/blog/how-to-check-batch-code'
 
 const monthNames = [
   '一月',
@@ -259,6 +260,14 @@ Page({
     this.setData({
       batchCode: event.detail.value,
       result: null
+    })
+  },
+
+  openBatchCodeGuide() {
+    this.closeBrandList()
+
+    wx.navigateTo({
+      url: `/pages/webview/webview?url=${encodeURIComponent(batchCodeGuideUrl)}`
     })
   },
 
