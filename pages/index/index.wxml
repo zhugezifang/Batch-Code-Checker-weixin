@@ -48,6 +48,7 @@
 
     <view class="helper-row">
       <text class="helper primary-helper" bindtap="openBatchCodeGuide">批号说明</text>
+      <text class="helper primary-helper">建议反馈</text>
     </view>
 
     <button class="query-button" bindtap="handleQuery">立即查询</button>
