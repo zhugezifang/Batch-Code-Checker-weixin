@@ -34,9 +34,37 @@
   font-weight: 700;
 }
 
+.page-title-section {
+  padding: 38rpx 40rpx 8rpx;
+  text-align: center;
+}
+
+.page-title,
+.page-subtitle {
+  display: block;
+}
+
+.page-title {
+  color: #202124;
+  font-size: 42rpx;
+  font-weight: 900;
+  line-height: 1.28;
+}
+
+.page-subtitle {
+  max-width: 620rpx;
+  margin-top: 14rpx;
+  margin-right: auto;
+  margin-left: auto;
+  color: #7b8190;
+  font-size: 26rpx;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
 .query-area {
   position: relative;
-  padding: 40rpx 32rpx 0;
+  padding: 30rpx 32rpx 0;
 }
 
 .brand-section {

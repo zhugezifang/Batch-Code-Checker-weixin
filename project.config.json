@@ -1,5 +1,5 @@
 {
-  "description": "微信小程序模板：批量码检测",
+  "description": "化妆品批码查询",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -44,7 +44,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.7.0",
-  "appid": "wxa58bbee1283137f7",
+  "appid": "wxc4c2538c9c804bf0",
   "projectname": "Batch-Code-Checker-weixin",
   "condition": {},
   "editorSetting": {

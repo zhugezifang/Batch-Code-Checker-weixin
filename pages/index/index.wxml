@@ -3,6 +3,10 @@
     <text class="notice-text">官网:https://batchcodechecker.org/zh</text>
   </view>
 
+  <view class="page-title-section">
+    <text class="page-title">化妆品批号和生产日期查询</text>
+  </view>
+
   <view class="query-area">
     <view class="brand-section" catchtap="noop">
       <view class="form-row">
