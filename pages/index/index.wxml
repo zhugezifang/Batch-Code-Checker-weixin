@@ -1,0 +1,110 @@
+<view class="page index-page" bindtap="closeBrandList">
+  <view class="notice-bar">
+    <text class="notice-icon">!</text>
+    <text class="notice-text">注意5和S的区别</text>
+  </view>
+
+  <view class="query-area">
+    <view class="brand-section" catchtap="noop">
+      <view class="form-row">
+        <text class="row-label">品牌</text>
+        <input
+          class="brand-input {{brandName ? 'has-value' : ''}}"
+          value="{{brandKeyword}}"
+          placeholder="请选择品牌"
+          placeholder-class="input-placeholder"
+          bindfocus="onBrandFocus"
+          bindinput="onBrandInput"
+        />
+        <text class="row-arrow">›</text>
+      </view>
+
+      <view wx:if="{{showBrandList}}" class="brand-list">
+        <view
+          wx:for="{{filteredBrands}}"
+          wx:key="value"
+          class="brand-option {{selectedBrand && selectedBrand.value === item.value ? 'is-selected' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="selectBrand"
+        >
+          <text>{{item.label}}</text>
+        </view>
+        <view wx:if="{{!filteredBrands.length}}" class="brand-empty">
+          <text>未找到匹配品牌</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="form-row">
+      <text class="row-label">批号</text>
+      <input
+        class="input-field"
+        value="{{batchCode}}"
+        placeholder="请输入生产批号"
+        placeholder-class="input-placeholder"
+        maxlength="32"
+        bindinput="onBatchInput"
+      />
+    </view>
+
+    <view class="helper-row">
+      <text class="helper primary-helper">批号说明</text>
+    </view>
+
+    <button class="query-button" bindtap="handleQuery">立即查询</button>
+
+    <view class="record-title">
+      <text class="record-line">------</text>
+      <text class="record-text">查询记录</text>
+      <text class="record-line">------</text>
+    </view>
+  </view>
+
+  <view wx:if="{{result}}" class="result-panel {{result.status === 'pass' ? 'is-pass' : 'is-fail'}}">
+    <view class="result-hero">
+      <view class="result-icon">
+        <text>{{result.status === 'pass' ? '✓' : '!'}}</text>
+      </view>
+      <view class="result-main">
+        <text class="result-kicker">查询结果</text>
+        <text class="result-title">{{result.title}}</text>
+        <text class="result-code-pill">{{result.batchCode}}</text>
+      </view>
+      <text class="result-status">{{result.status === 'pass' ? '可用' : '异常'}}</text>
+    </view>
+
+    <view wx:if="{{result.isValid}}" class="result-metrics">
+      <view class="metric-card">
+        <text class="metric-label">生产日期</text>
+        <view class="date-metric">
+          <text class="date-year">{{result.manufacturingYear}}</text>
+          <text class="date-month">{{result.manufacturingDate}}</text>
+        </view>
+      </view>
+      <view class="metric-card">
+        <text class="metric-label">产品年龄</text>
+        <text class="metric-value">{{result.ageText}}</text>
+      </view>
+    </view>
+
+    <view class="result-info">
+      <view class="result-row">
+        <text class="result-label">品牌</text>
+        <text class="result-value">{{result.brand}}</text>
+      </view>
+      <view wx:if="{{result.isValid}}" class="result-row">
+        <text class="result-label">过期状态</text>
+        <text class="result-value">{{result.isExpired ? '可能已过期' : '未过期'}}</text>
+      </view>
+      <view class="result-row">
+        <text class="result-label">查询时间</text>
+        <text class="result-value">{{result.checkedAt}}</text>
+      </view>
+    </view>
+
+    <view class="result-advice">
+      <text class="advice-title">{{result.status === 'pass' ? '使用建议' : '注意事项'}}</text>
+      <text>{{result.description}}</text>
+    </view>
+  </view>
+</view>
